@@ -40,6 +40,8 @@ This folder contains the scripts needed to interact with and use the second vers
 
 #### `REDCAP_Merge`
 
+This folder contains three versions of a script (`redcap_eyechart_merge`) that I did not create, but made edits to. While I've enclosed all of the scripts that contain my edits in this folder, the relevant script is the most recent version: `redcap_eyechart_merge_v2.2.ipynb`. This includes the edits for handling a glaucoma medications that contains duplicate rows, and for classifying `"OTHER (Specify)"` medications as glaucoma. 
+
 #### `RF_VFxmlParse`
 
 #### `pdf-ocr`
