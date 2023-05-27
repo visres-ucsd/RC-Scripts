@@ -85,10 +85,10 @@ This folder contains the scripts used to manage the dicom files from forum.
 
 **The two most relevant scripts in this folder are as follows:**
 
-- `extract_pdf_from_forum_dicom_v6.0.0.ipynb`
+- `extract_pdf_from_forum_dicom_v10.0.0.ipynb`
   - This is a Python notebook used to go through a directory of dicom files or a directory containing multiple directories of dicom files. This script's purpose is to convert each dicom file to a PDF, rename it based on a `PatientName_Eye_ExamDate_TestType_ExamTime` naming schema, and move it to a new folder based on the test type. The script will create the stratified test type folders if they are not created on your computer already.
 
-  - Upon opening the script in Jupyter, adjust the input and output directories to the desired locations in order to use the script (more detailed instructions are enclosed in the script). This script is currently designed to work on one directory containing dicom files, and not a directory containing other directories.
+  - Upon opening the script in Jupyter, adjust the input and output directories to the desired locations in order to use the script (more detailed instructions are enclosed in the script). This script is currently designed to work on either one directory containing dicom files, or a directory containing multiple directories of dicom files.
 
 If there are any troubles importing the `pydicom` package once the script has been run, please contact Nicole (this is usually indicated by an Error right after the code box that is labeled `Imports`).
 
