@@ -42,12 +42,62 @@ This folder contains the scripts needed to interact with and use the second vers
 
 This folder contains three versions of a script (`redcap_eyechart_merge`) that I did not create, but made edits to. While I've enclosed all of the scripts that contain my edits in this folder, the relevant script is the most recent version: `redcap_eyechart_merge_v2.2.ipynb`. This includes the edits for handling a glaucoma medications that contains duplicate rows, and for classifying `"OTHER (Specify)"` medications as glaucoma. 
 
+<br>
+
 #### `RF_VFxmlParse`
+
+This folder contains 7 versions of a script originally authored by James, which I took over. The script is designed to parse XML files, and output the information in csv format divided by test type. The script is currently updated to work for 10-2, 24-2, 24-2C, 30-2, and 60-4 test types. The script is also currently updated to work on either a single directory of XML files, or a directory containing multiple directories of XML files.
+
+The most relevant version of the script is `RF_VFxmlParse_V.23.R`. This script contains all of the updates listed above.
+
+In order to use the script, change the file path within `file.path("...")` to the file path pointing to where the XML files are stored.
+
+<br>
 
 #### `pdf-ocr`
 
+This folder contains 4 versions of a script used to extract information from visual field PDFs using AWS optical character recognition. Since the OCR provided by AWS is not very accurate on visual field PDFs, there likely won't be much need for this script. In addition, the setup for these scripts is rather involved due to the interactions with AWS (specifically S3 and the AWS Software Development Kit for Python, `boto3`).
+
+In order to properly set up your environment to use this script, please see the [Boto3 Documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html) for installing `boto3` and ensuring that your S3 buckets can be accessed via Jupyter. While executing this process a few other resources will be helpful (both linked in the `boto3` documentation), but here they are as well for convenience:
+
+- [Creating IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console)
+- [Managing Access Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)
+
+These will help with giving yourself the proper user permissions, as well as retrieving your access keys to use `boto3`.
+
+If this script is needed and there are any troubles with setup, please contact Nicole.
+
+<br>
+
 #### `pdf-pdfquery`
 
+This folder contains two versions of a script used to extract information from visual field PDFs using a Python library called `pdfquery`. While this script performs the same task as the scripts enclosed in `pdf-ocr`, it is more accurate and quicker as well. This script is also updated to work on the probability plots in each visual field PDF (non-text data). 
+
+Upon opening the script in Jupyter, adjust the input and output directories to the desired locations in order to use the script (more detailed instructions are enclosed in the script). This script is currently designed to work on one directory containing visual field PDFs, and not a directory containing other directories.
+
+If there are any troubles importing the `pdfquery` package once the script has been run, please contact Nicole.
+
+<br>
+
 #### `vf-dicom`
+
+This folder contains the scripts used to manage the dicom files from forum.
+
+**The two most relevant scripts in this folder are as follows:**
+
+- `extract_pdf_from_forum_dicom_v6.0.0.ipynb`
+  - This is a Python notebook used to go through a directory of dicom files or a directory containing multiple directories of dicom files. This script's purpose is to convert each dicom file to a PDF, rename it based on a `PatientName_Eye_ExamDate_TestType_ExamTime` naming schema, and move it to a new folder based on the test type. The script will create the stratified test type folders if they are not created on your computer already.
+
+  - Upon opening the script in Jupyter, adjust the input and output directories to the desired locations in order to use the script (more detailed instructions are enclosed in the script). This script is currently designed to work on one directory containing dicom files, and not a directory containing other directories.
+
+If there are any troubles importing the `pydicom` package once the script has been run, please contact Nicole (this is usually indicated by an Error right after the code box that is labeled `Imports`).
+
+
+- `extract_pdf_from_pdfs_v4.0.0.ipynb`
+  - This is a Python notebook used to go through a directory of PDFs resulting from using the `extract_pdf_from_forum_dicom_v6.0.0.ipynb` script. Based on a csv provided by the user, it will filter the files and move only the selected PDFs to a directory of your choosing.
+
+  - Upon opening the script in Jupyter, adjust the input and output directories to the desired locations in order to use the script (more detailed instructions are enclosed in the script). You will also need to adjust the subset file path so that it is the file path for the csv file that contains a subset of file names. 
+  
+  - **NOTE** The csv file being used to identify which PDF files to extract *must* contain a column called `"maskedID"` (case sensitive). The other columns it will utilize (if included in the csv file) are `"Date"` and `"Eye"` (also case sensitive).
   
 
